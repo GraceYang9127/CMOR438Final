@@ -72,10 +72,7 @@ def test_standard_scaler_constant_column():
     assert not np.any(np.isnan(Xt))
 
 
-# -------------------------------------------------------------------
 # MinMaxScaler
-# -------------------------------------------------------------------
-
 def test_minmax_scaler_zero_one_range(simple_X):
     """
     Test MinMaxScaler scales features to [0, 1].
