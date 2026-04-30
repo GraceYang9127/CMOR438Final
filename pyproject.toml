@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rice_ml"
+version = "0.1.0"
+description = "From-scratch ML algorithms for CMOR 438 / INDE 577"
+requires-python = ">=3.9"
+dependencies = ["numpy", "pandas", "matplotlib", "networkx"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
