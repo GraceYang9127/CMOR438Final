@@ -4,9 +4,8 @@ import pytest
 from rice_ml.metrics import mse, rmse, r2_score, accuracy_score, confusion_matrix, classification_report
 
 
-# -------------------------------------------------------------------
+
 # MSE
-# -------------------------------------------------------------------
 
 def test_mse_perfect_predictions():
     """
@@ -30,9 +29,8 @@ def test_mse_known_value():
     assert mse([0, 0], [2, 2]) == 4.0
 
 
-# -------------------------------------------------------------------
+
 # RMSE
-# -------------------------------------------------------------------
 
 def test_rmse_perfect_predictions():
     """
@@ -56,9 +54,8 @@ def test_rmse_known_value():
     assert np.isclose(rmse([0, 0], [3, 4]), np.sqrt(12.5))
 
 
-# -------------------------------------------------------------------
+
 # R²
-# -------------------------------------------------------------------
 
 def test_r2_perfect_fit():
     """
@@ -100,9 +97,8 @@ def test_r2_constant_prediction():
     assert score < 1.0
 
 
-# -------------------------------------------------------------------
+
 # Accuracy
-# -------------------------------------------------------------------
 
 def test_accuracy_perfect():
     """
@@ -149,9 +145,8 @@ def test_accuracy_mismatched_lengths():
         accuracy_score([0, 1, 2], [0, 1])
 
 
-# -------------------------------------------------------------------
+
 # Confusion matrix
-# -------------------------------------------------------------------
 
 def test_confusion_matrix_binary_perfect():
     """
@@ -202,9 +197,8 @@ def test_confusion_matrix_sum():
     assert cm.sum() == len(y)
 
 
-# -------------------------------------------------------------------
+
 # Classification report
-# -------------------------------------------------------------------
 
 def test_classification_report_keys_present():
     """
