@@ -1,34 +1,70 @@
 """
 metrics.py
 
-A minimal implementation of fundamental classification and regression metrics, including:
+Evaluation metrics for regression and classification models.
 
-mse, 
-rmse, 
-r2_score, 
-accuracy_score, 
-confusion_matrix, 
-classification_report   
-
-
+Functions:
+- mse: Mean Squared Error: (1/n) * sum((y_i - y_hat_i)^2)
+- rmse: Root Mean Squared Error: sqrt(MSE)
+- r2_score: Coefficient of determination: R^2 = 1 - SS_res / SS_tot
+- accuracy_score: Fraction of correctly classified samples.
+- confusion_matrix: Count matrix where entry [i, j] = samples with true label i predicted as j.
+- classification_report: Per-class precision, recall, F1, and support with macro/weighted averages.
 """
 
 import numpy as np
 
 def mse(y_true, y_pred):
-    # MSE = (1/n) * sum((y_i - y_hat_i)^2)
+    """
+    Compute Mean Squared Error. MSE = (1/n) * sum((y_i - y_hat_i)^2)
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+    y_pred : array-like of shape (n_samples,)
+
+    Returns
+    -------
+    float
+    """
     y_true, y_pred = np.array(y_true, dtype=float), np.array(y_pred, dtype=float)
     return float(np.mean((y_true - y_pred) ** 2))
 
 
 def rmse(y_true, y_pred):
-    # RMSE = sqrt(MSE)
+    """
+    Compute Root Mean Squared Error. RMSE = sqrt(MSE)
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+    y_pred : array-like of shape (n_samples,)
+
+    Returns
+    -------
+    float
+    """
     return float(np.sqrt(mse(y_true, y_pred)))
 
 
 def r2_score(y_true, y_pred):
-    # R^2 = 1 - SS_res / SS_tot
-    # SS_res = sum((y_i - y_hat_i)^2), SS_tot = sum((y_i - y_bar)^2)
+    """
+    Compute coefficient of determination R^2.
+
+    R^2 = 1 - SS_res / SS_tot
+    SS_res = sum((y_i - y_hat_i)^2)
+    SS_tot = sum((y_i - y_bar)^2)
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+    y_pred : array-like of shape (n_samples,)
+
+    Returns
+    -------
+    float
+        1.0 for a perfect fit; can be negative for very poor models.
+    """
     y_true, y_pred = np.array(y_true, dtype=float), np.array(y_pred, dtype=float)
     ss_res = np.sum((y_true - y_pred) ** 2)
     ss_tot = np.sum((y_true - y_true.mean()) ** 2)
@@ -38,13 +74,44 @@ def r2_score(y_true, y_pred):
 
 
 def accuracy_score(y_true, y_pred):
-    # accuracy = (number of correct predictions) / n
+    """
+    Compute fraction of correctly classified samples. accuracy = (number correct) / n
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+    y_pred : array-like of shape (n_samples,)
+
+    Returns
+    -------
+    float in [0, 1]
+
+    Raises
+    ------
+    ValueError
+        If y_true and y_pred have different lengths.
+    """
     y_true, y_pred = np.array(y_true), np.array(y_pred)
+    if y_true.shape[0] != y_pred.shape[0]:
+        raise ValueError("y_true and y_pred must have the same length.")
     return float(np.mean(y_true == y_pred))
 
 
 def confusion_matrix(y_true, y_pred, labels=None):
-    # Entry [i, j] = count of samples with true label i predicted as label j
+    """
+    Compute confusion matrix. Entry [i, j] is the count of samples with true label i predicted as label j.
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+    y_pred : array-like of shape (n_samples,)
+    labels : array-like or None
+        Ordered list of class labels. Inferred from data if None.
+
+    Returns
+    -------
+    cm : ndarray of shape (n_classes, n_classes)
+    """
     y_true, y_pred = np.array(y_true), np.array(y_pred)
     if labels is None:
         labels = np.unique(np.concatenate([y_true, y_pred]))
@@ -58,7 +125,22 @@ def confusion_matrix(y_true, y_pred, labels=None):
 
 
 def classification_report(y_true, y_pred, labels=None):
-    # Per-class precision, recall, f1, support + macro and weighted averages
+    """
+    Compute per-class precision, recall, F1-score, and support.
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+    y_pred : array-like of shape (n_samples,)
+    labels : array-like or None
+        Ordered list of class labels. Inferred from data if None.
+
+    Returns
+    -------
+    report : dict
+        Keys are class labels (as strings) plus 'macro avg' and 'weighted avg'.
+        Each value is a dict with keys: precision, recall, f1-score, support.
+    """
     y_true, y_pred = np.array(y_true), np.array(y_pred)
     if labels is None:
         labels = np.unique(np.concatenate([y_true, y_pred]))
