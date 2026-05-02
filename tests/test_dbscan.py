@@ -11,7 +11,6 @@ def two_cluster_data():
     X1 = rng.normal([5, 5], 0.2, (15, 2))
     return np.vstack([X0, X1])
 
-
 @pytest.fixture
 def noise_data():
     # Dense cluster plus one outlier far away
@@ -19,8 +18,6 @@ def noise_data():
     X_cluster = rng.normal([0, 0], 0.2, (20, 2))
     outlier = np.array([[50.0, 50.0]])
     return np.vstack([X_cluster, outlier])
-
-
 
 # Fit
 def test_dbscan_fit_returns_self(two_cluster_data):
