@@ -128,8 +128,7 @@ class KMeans(object):
         return _assign_clusters(X, self.centroids_)
 
     def fit_predict(self, X):
-        """F
-        it to X and return cluster labels.
+        """Fit to X and return cluster labels.
 
         Parameters
         ----------

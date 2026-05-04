@@ -2,6 +2,7 @@ from .perceptron import Perceptron
 from .linear_regression import LinearRegression
 from .logistic_regression import LogisticRegression
 from .multilayer_perceptron import DenseNetwork
+MLP = DenseNetwork
 from .knn import KNN, KNNRegressor
 from .decision_tree import DecisionTreeClassifier, DecisionTreeRegressor
 from .random_forest import RandomForestClassifier, RandomForestRegressor
@@ -14,6 +15,7 @@ __all__ = [
     "LinearRegression",
     "LogisticRegression",
     "DenseNetwork",
+    "MLP",
     "KNN",
     "KNNRegressor",
     "DecisionTreeClassifier",
