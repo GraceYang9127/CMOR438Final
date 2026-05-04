@@ -113,9 +113,15 @@ class LabelPropagation(object):
         ])
         return self
 
-    def predict(self):
+    def predict(self, X=None):
         """
         Return the propagated labels for all samples.
+
+        Parameters
+        ----------
+        X: ignored
+            Present for API consistency. Label propagation does not generalize
+            to unseen points; labels are computed during fit() for all samples.
 
         Returns
         -------
