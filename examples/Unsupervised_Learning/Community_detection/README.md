@@ -20,7 +20,7 @@ $Q > 0.3$ indicates meaningful community structure.
 
 ## Dataset
 
-**Food Similarity Graph** (built from `FOOD-DATA-GROUP1.csv`) - 551 food items connected by edges when their cosine similarity exceeds 0.85. Communities correspond to nutritionally similar food groups (e.g. meats, dairy, vegetables).
+**Food Similarity Graph** (built from `FOOD-DATA-GROUP1.csv`) - 551 food items connected by edges when their cosine similarity exceeds 0.70. At this threshold the graph has ~7700 edges and 22 connected components. Communities correspond to nutritionally similar food groups (e.g. meats, dairy, vegetables).
 
 Falls back to the **Karate Club Graph** (`nx.karate_club_graph()`) if CSV is not found: 34 nodes, 78 edges, ground truth available.
 
