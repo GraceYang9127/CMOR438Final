@@ -1,6 +1,6 @@
 # CMOR 438 / INDE 577 — Data Science & Machine Learning
 
-A from-scratch Python machine learning package built for Rice University's CMOR 438 / INDE 577 course. 
+A Python machine learning package built for Rice University's CMOR 438 / INDE 577 course. 
 
 
 ---
