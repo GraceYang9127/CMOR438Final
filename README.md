@@ -89,6 +89,16 @@ CMOR438/
 | Bagging | `BaggingClassifier` | Bootstrap aggregating over any base estimator. Reduces variance. |
 | Gradient Boosting | `GradientBoostingRegressor` | Sequential trees fit to residuals: $F_m = F_{m-1} + \eta h_m$. |
 | Neural Network | `DenseNetwork`, `MLP` | Fully connected MLP. He initialization, sigmoid activations, backpropagation. |
+| KNN Regressor | `KNNRegressor` | Predicts continuous values as the mean of the $k$ nearest neighbors' targets. |
+| Gradient Descent | `GradientDescent`, `gradient_descent` | Generic gradient descent optimizer with convergence tracking. Update: $w \leftarrow w - \alpha f'(w)$. |
+
+### Distance Metrics (`rice_ml.supervised_learning`)
+
+| Function | Description |
+|---|---|
+| `euclidean(x1, x2)` | L2 distance: $\sqrt{\sum(x_{1i} - x_{2i})^2}$ |
+| `manhattan(x1, x2)` | L1 distance: $\sum\|x_{1i} - x_{2i}\|$ |
+| `cosine(x1, x2)` | Cosine distance: $1 - \frac{x_1 \cdot x_2}{\|x_1\|\|x_2\|}$ |
 
 ### Unsupervised Learning
 
@@ -131,14 +141,14 @@ CMOR438/
 
 Place CSV files in the `data/` directory (not committed to git). Each notebook falls back to a sklearn built-in if the CSV is not found.
 
-| File | Description | Used In |
-|---|---|---|
-| `heart.csv` | 1025 patients, 13 clinical features, binary heart disease label | Perceptron, KNN, Ensembles |
-| `diabetes.csv` | 768 patients, 8 medical features (glucose, BMI, insulin), diabetes outcome | Logistic Regression |
-| `Obesity_levels.csv` | 2111 samples, 16 lifestyle features, 7 obesity categories | Neural Network, Decision Tree |
-| `gym_members_exercise_tracking.csv` | 973 gym members, 15 features, predict calories burned or session duration | Linear Regression, Regression Tree, PCA |
-| `bodyfat.csv` | 252 samples, 14 body measurements, predict body fat percentage | Ensembles |
-| `FOOD-DATA-GROUP1.csv` | 551 food items, 37 nutritional features (calories, fat, protein, vitamins) | K-Means, DBSCAN, SVD, Community Detection |
+| File | Description | Used In | Source |
+|---|---|---|---|
+| `heart.csv` | 1025 patients, 13 clinical features, binary heart disease label | Perceptron, KNN, Ensembles | [Kaggle](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset) |
+| `diabetes.csv` | 768 patients, 8 medical features (glucose, BMI, insulin), diabetes outcome | Logistic Regression | [Kaggle](https://www.kaggle.com/datasets/mragpavank/diabetes) |
+| `Obesity_levels.csv` | 2111 samples, 16 lifestyle features, 7 obesity categories | Neural Network, Decision Tree | [Kaggle](https://www.kaggle.com/code/mpwolke/obesity-levels-life-style) |
+| `gym_members_exercise_tracking.csv` | 973 gym members, 15 features, predict calories burned or session duration | Linear Regression, Regression Tree, PCA | [Kaggle](https://www.kaggle.com/datasets/valakhorasani/gym-members-exercise-dataset) |
+| `bodyfat.csv` | 252 samples, 14 body measurements, predict body fat percentage | Ensembles | [Kaggle](https://www.kaggle.com/datasets/fedesoriano/body-fat-prediction-dataset) |
+| `FOOD-DATA-GROUP1.csv` | 551 food items, 37 nutritional features (calories, fat, protein, vitamins) | K-Means, DBSCAN, SVD, Community Detection | [Kaggle](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset) |
 
 ---
 
