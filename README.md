@@ -24,6 +24,7 @@ Key features:
 
 ```
 CMOR438/
+├── data/
 ├── examples/
 │   ├── Supervised_Learning/
 │   │   ├── Decision Trees/
@@ -139,7 +140,7 @@ CMOR438/
 
 ## Datasets
 
-Place CSV files in the `data/` directory (not committed to git). Each notebook falls back to a sklearn built-in if the CSV is not found.
+Place CSV files in the `data/` directory (not committed to git due to file size). Each notebook falls back to a sklearn built-in if the CSV is not found.
 
 | File | Description | Used In | Source |
 |---|---|---|---|
