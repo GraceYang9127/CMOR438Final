@@ -17,7 +17,7 @@ def noise_data():
     rng = np.random.default_rng(2)
     X_cluster = rng.normal([0, 0], 0.2, (20, 2))
     outlier = np.array([[50.0, 50.0]])
-    return np.vstack([X_cluster, outlier])
+    return np.vstack([X_cluster, outlier]) #hu
 
 # Fit
 def test_dbscan_fit_returns_self(two_cluster_data):
